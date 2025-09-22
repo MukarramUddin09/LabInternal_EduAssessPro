@@ -42,6 +42,10 @@
           <version>3.3.1</version>
         </plugin>
         <plugin>
+        	<artifactId>maven-site-plugin</artifactId>
+        	<version>3.12.1</version>
+        </plugin>
+        <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.13.0</version>
         </plugin>
