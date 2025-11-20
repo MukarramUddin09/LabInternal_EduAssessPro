@@ -8,7 +8,8 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git 'https://github.com/MukarramUddin09/LabInternal_EduAssessPro.git'
+                git branch: 'main',
+                url: 'https://github.com/MukarramUddin09/LabInternal_EduAssessPro.git'
             }
         }
 
