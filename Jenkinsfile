@@ -1,24 +1,32 @@
 pipeline {
     agent any
 
+    tools {
+        maven "Maven-3.9"
+    }
+
     stages {
         stage('Clone') {
             steps {
-                git 'https://github.com/your/repo.git'
+                git 'https://github.com/MukarramUddin09/LabInternal_EduAssessPro.git'
             }
         }
 
         stage('Build WAR') {
             steps {
-                sh 'mvn clean package'
+                bat "mvn clean package"
             }
         }
 
         stage('Deploy to Tomcat') {
             steps {
-                sh '''
-                cp target/EduAssessPro.war /opt/tomcat/webapps/
-                '''
+                deploy adapters: [
+                    tomcat9(
+                        credentialsId: 'tomcat-cred',
+                        path: '',
+                        url: 'http://localhost:8081'
+                    )
+                ], war: 'target/EduAssessPro.war'
             }
         }
     }
